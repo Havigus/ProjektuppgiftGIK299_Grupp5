@@ -98,18 +98,8 @@ class Program
                         }
 
                     }
-
                     
-                    
-                    
-                    
-                    
-                                      
-                    
-                    
-                    
-                    
-                break;
+                    break;
                 
                 case "2":
                     //kod för val två

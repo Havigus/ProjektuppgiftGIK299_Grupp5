@@ -22,7 +22,7 @@ public class AdminPanel
 
     public void ViewBookings(DateTime date)
     {
-        var todaysBookings = bookings.Where(b => b.BookingTime == date).ToList();
+        var todaysBookings = bookings.Where(b => b.BookingTime.Date == date.Date).ToList();
         if (todaysBookings.Count == 0)
         {
             Console.WriteLine("There are no bookings for this date.");

@@ -26,7 +26,8 @@ class Program
                 "\n\n\t2. Ändra en bokning" +
                 "\n\n\t3. Se dagens bokningar" +
                 "\n\n\t5. Se veckans bokningar" +
-                "\n\n\t4. Sök efter KundID eller RegNr");
+                "\n\n\t4. Sök efter KundID eller RegNr" +
+                "\n\n\t5. Avsluta programmet");
             Console.WriteLine();
             Console.WriteLine("Gör ditt val med en siffra: ");
             Console.WriteLine();
@@ -135,6 +136,12 @@ class Program
                 case "4":
                     //kod för val fyra
                 break;
+
+                case "5":
+                    Console.WriteLine("Välkommen åter!");
+                    Thread.Sleep(1000);
+                    contRunning = false;
+                    break;
                 
                     
                 

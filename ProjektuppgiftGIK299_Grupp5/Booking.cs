@@ -32,11 +32,11 @@ namespace ProjektuppgiftGIK299_Grupp5
         public override string ToString()
         {
             return $"BookingId: {BookingId}" +
-                   $"Customer Name: {CustomerName}" +
-                   $"Customer Car RegNr: {CustomerRegNr}" +
-                   $"Time: {BookingTime}" +
-                   $"Service: {Service}" +
-                   $"Comment: {Comment}";
+                   $"\nCustomer Name: {CustomerName}" +
+                   $"\nCustomer Car RegNr: {CustomerRegNr}" +
+                   $"\nTime: {BookingTime}" +
+                   $"\nService: {Service}" +
+                   $"\nComment: {Comment}";
         }
     }
 }

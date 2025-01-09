@@ -19,7 +19,7 @@ namespace ProjektuppgiftGIK299_Grupp5
         
         public string Comment { get; set; }
 
-        internal Booking(int bookingId, string customerName, string customerRegNr, DateTime bookingTime, Services service, string? comment) //WHAT DO YOU WANT FROM ME
+        internal Booking(int bookingId, string customerName, string customerRegNr, DateTime bookingTime, Services service, string? comment)
         {
             CustomerName = customerName;
             CustomerRegNr = customerRegNr;

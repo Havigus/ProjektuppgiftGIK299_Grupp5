@@ -1,4 +1,6 @@
-﻿namespace ProjektuppgiftGIK299_Grupp5;
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace ProjektuppgiftGIK299_Grupp5;
 
 class Program
 {
@@ -20,7 +22,7 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Vad vill du göra?");
             Console.WriteLine();
-            Console.WriteLine("\t1. Göra en bokning" +
+            Console.WriteLine("\t1. Skapa en bokning" +
                 "\n\n\t2. Ändra en bokning" +
                 "\n\n\t3. Se dagens bokningar" +
                 "\n\n\t5. Se veckans bokningar" +
@@ -69,6 +71,19 @@ class Program
                 
                 case "3":
                     //kod för val tre
+                    Console.WriteLine();
+                    Console.WriteLine("Vilket datum vill du se? Skriv yyyy mm dd: ");
+                    Console.WriteLine();
+                    DateTime userDate = DateTime.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    adminPanel.ViewBookings(userDate);
+                    Thread.Sleep(1000);
+
+                    
+
+                    
+                    
+                    
                 break;
                 
                 case "4":

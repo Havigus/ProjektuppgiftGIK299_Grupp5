@@ -45,4 +45,5 @@ public class AdminPanel
     {
         //kod för att ta bort en bokning
     }
+
 }

@@ -17,4 +17,19 @@ public class AdminPanel
         bookings.Add(booking);
         Console.WriteLine("Booking added successfully.");
     }
+
+    public void ViewBookings(DateTime bookingTime)
+    {
+        //kod för att se bokningar för ett vist datum
+    }
+
+    public void ChangeBooking()
+    {
+        //kod för att ändra på en bookning
+    }
+
+    public void CancelBooking()
+    {
+        //kod för att ta bort en bokning
+    }
 }

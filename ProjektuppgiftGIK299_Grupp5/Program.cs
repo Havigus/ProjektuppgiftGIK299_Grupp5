@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Booking> bookings = new List<Booking>();
+       AdminPanel adminPanel = new();
 
         bool contRunning = true;
 
@@ -29,33 +29,30 @@ class Program
             Console.WriteLine("Gör ditt val med en siffra: ");
             Console.WriteLine();
 
-            int menuChoice;
-
-            if (int.TryParse(Console.ReadLine(), out menuChoice))
+            switch (Console.ReadKey().KeyChar.ToString())
             {
-                switch (menuChoice)
-                {
-                    case 1:
-                        Console.WriteLine();
-
-                }
+                case "1":
+                    //kod för val ett
+                break;
+                
+                case "2":
+                    //kod för val två
+                break;
+                
+                case "3":
+                    //kod för val tre
+                break;
+                
+                case "4":
+                    //kod för val fyra
+                break;
+                
+                    
+                
             }
-            Console.WriteLine();
 
 
 
         }
-    }
-    private static Booking AddBooking()
-    {
-            Console.WriteLine("Mata in kundens namn:");
-            Console.WriteLine();
-            string custName = Console.ReadLine();
-            Console.WriteLine();
-            Console.WriteLine("Mata in kundens registreringsnummer:");
-            string custRegNr = Console.ReadLine();
-            Console.WriteLine();
-            Console.WriteLine("Mata in den önskade tiden för service:");
-            DateTime bookingTime =
     }
 }

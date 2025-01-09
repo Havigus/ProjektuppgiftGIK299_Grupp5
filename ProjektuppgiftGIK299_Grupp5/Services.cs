@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjektuppgiftGIK299_Grupp5
 {
-    internal enum Services
+    public enum Services
     {
         DäckbyteSäsong,
         DäckbyteNyaDäck,

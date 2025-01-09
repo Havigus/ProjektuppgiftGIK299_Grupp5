@@ -8,21 +8,21 @@ namespace ProjektuppgiftGIK299_Grupp5
 {
     internal class Booking
     {
-        private string CustName { get; set; }
+        public string CustomerName { get; set; }
 
-        private string CustRegNr { get; set; }
+        public string CustomerRegNr { get; set; }
         
-        private DateTime BookingTime { get; set; }
+        public DateTime BookingTime { get; set; }
         
-        private Services Service { get; set; }
+        public Services Service { get; set; }
 
-        internal Booking(string custName,
-            string custRegNr,
+        internal Booking(int i, string customerName,
+            string customerRegNr,
             DateTime? bookingTime = null,
             Services service) //WHAT DO YOU WANT FROM ME
         {
-            CustName = custName;
-            CustRegNr = custRegNr;
+            CustomerName = customerName;
+            CustomerRegNr = customerRegNr;
             BookingTime = bookingTime ?? DateTime.Now;
             Service = service;
         }

@@ -8,7 +8,7 @@ namespace ProjektuppgiftGIK299_Grupp5
 {
     public enum Services
     {
-        DäckbyteSäsong,
+        DäckbyteSäsong = 1,
         DäckbyteNyaDäck,
         Hjulinställning,
         Däckhotell,

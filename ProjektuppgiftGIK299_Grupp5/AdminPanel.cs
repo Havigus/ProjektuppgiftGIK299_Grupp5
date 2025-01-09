@@ -5,22 +5,35 @@ public class AdminPanel
     private List<Booking> bookings = new List<Booking>();
     private int bookingCounter = 0;
 
-    public void AddBooking(string customerName, string customerRegNr, DateTime bookingTime, Services services)
+    public void AddBooking(string customerName, string customerRegNr, DateTime bookingTime, Services services, string comment)
     {
-        if (bookings.Any(b => b.BookingTime == bookingTime))
+        if (bookings.Any(b => b.BookingTime == bookingTime)) // TODO! Fixa så att varje bookning är typ 30 min så att man inte kan booka kl 11:00 sen en 11:02.
         {
             Console.WriteLine("Error: Double booking! Please choose a different time.");
             Console.Beep(1000, 200);
         }
-        
-        var booking = new Booking(bookingCounter++, customerName, customerRegNr, bookingTime, services);
+
+        int bookingId = bookingCounter;
+        var booking = new Booking(bookingId, customerName, customerRegNr, bookingTime, services, comment);
         bookings.Add(booking);
         Console.WriteLine("Booking added successfully.");
+        bookingCounter++;
     }
 
-    public void ViewBookings(DateTime bookingTime)
+    public void ViewBookings(DateTime date)
     {
-        //kod för att se bokningar för ett vist datum
+        var todaysBookings = bookings.Where(b => b.BookingTime == date).ToList();
+        if (todaysBookings.Count == 0)
+        {
+            Console.WriteLine("There are no bookings for this date.");
+            return;
+        }
+        Console.WriteLine($"Bookings for {date.ToShortDateString()}");
+        foreach (var booking in todaysBookings)
+        {
+            Console.WriteLine(booking);
+            
+        }
     }
 
     public void ChangeBooking()

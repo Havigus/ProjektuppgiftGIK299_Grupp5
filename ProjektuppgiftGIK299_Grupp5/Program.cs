@@ -32,7 +32,35 @@ class Program
             switch (Console.ReadKey().KeyChar.ToString())
             {
                 case "1":
-                    //kod för val ett
+                    Console.WriteLine("Kundnamn: ");
+                    string name = Console.ReadLine();
+                    Console.WriteLine("Bilregistreringsnummer: ");
+                    string carRegNr = Console.ReadLine();
+                    Console.WriteLine("Datum och tid: (skriv som yyyy,mm,dd hh:mm");
+                    while (!DateTime.TryParse(Console.ReadLine(), out DateTime dateTime))
+                    {
+                        Console.WriteLine("Ogiltigt datum och tid format.");
+                    }
+                    
+                   //TODO! Lägg denhär menyn i en while loop så man kan välja fler services. Behövs nog en List för att hålla valen
+                    //alt att man bara tar servicen som en string och skippar enum
+                    Console.WriteLine("""
+                                      Vilken tjänst?
+                                      1. DäckbyteSäsong
+                                      2. DäckbyteNyaDäck
+                                      3. Hjulinställning
+                                      4. Däckhotell
+                                      5. EfterdragningDäck
+                                      6. BeställaDäck
+                                      """);
+                    
+                    
+                    
+                                      
+                    
+                    
+                    
+                    
                 break;
                 
                 case "2":

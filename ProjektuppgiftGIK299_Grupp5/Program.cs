@@ -48,7 +48,7 @@ class Program
                         string carRegNr = Console.ReadLine();
                         Console.WriteLine();
                         Thread.Sleep(200);
-                        Console.WriteLine("Datum: (Skriv som yyyy mm dd och hh:mm)");
+                        Console.WriteLine("Datum: (Skriv som yyyy mm dd och hh:mm)"); //TODO Flytta kod så att den kollar direkt vid inmatning om tiden är upptagen
                         Console.WriteLine();
                         DateTime dateTime;
                         Thread.Sleep(200);

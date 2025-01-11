@@ -13,17 +13,17 @@ namespace ProjektuppgiftGIK299_Grupp5
 
         public string CustomerRegNr { get; set; }
         
-        public DateTime BookingTime { get; set; }
+        public DateTime BookingDate { get; set; }
         
         public Services Service { get; set; }
         
         public string Comment { get; set; }
 
-        internal Booking(int bookingId, string customerName, string customerRegNr, DateTime bookingTime, Services service, string? comment)
+        internal Booking(int bookingId, string customerName, string customerRegNr, DateTime bookingDate, Services service, string? comment)
         {
             CustomerName = customerName;
             CustomerRegNr = customerRegNr;
-            BookingTime = bookingTime;
+            BookingDate = bookingDate;
             Service = service;
             BookingId = bookingId;
             Comment = string.IsNullOrEmpty(comment) ? "No Comment." : comment;
@@ -34,7 +34,7 @@ namespace ProjektuppgiftGIK299_Grupp5
             return $"BookingId: {BookingId}" +
                    $"\nCustomer Name: {CustomerName}" +
                    $"\nCustomer Car RegNr: {CustomerRegNr}" +
-                   $"\nTime: {BookingTime}" +
+                   $"\nDate and time: {BookingDate}" +
                    $"\nService: {Service}" +
                    $"\nComment: {Comment}";
         }

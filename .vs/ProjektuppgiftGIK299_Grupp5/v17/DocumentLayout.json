@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\elvir\\source\\repos\\ProjektuppgiftGIK299_Grupp5\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|c:\\users\\elvir\\source\\repos\\projektuppgiftgik299_grupp5\\projektuppgiftgik299_grupp5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|solutionrelative:projektuppgiftgik299_grupp5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|c:\\users\\elvir\\source\\repos\\projektuppgiftgik299_grupp5\\projektuppgiftgik299_grupp5\\adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|solutionrelative:projektuppgiftgik299_grupp5\\adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|c:\\users\\elvir\\source\\repos\\projektuppgiftgik299_grupp5\\projektuppgiftgik299_grupp5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|solutionrelative:projektuppgiftgik299_grupp5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CED4AD25-B6A4-4242-BA2B-CE6F53BC362C}|ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5.csproj|c:\\users\\elvir\\source\\repos\\projektuppgiftgik299_grupp5\\projektuppgiftgik299_grupp5\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,13 +34,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AdminPanel.cs",
               "DocumentMoniker": "C:\\Users\\elvir\\source\\repos\\ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5\\AdminPanel.cs",
               "RelativeDocumentMoniker": "ProjektuppgiftGIK299_Grupp5\\AdminPanel.cs",
               "ToolTip": "C:\\Users\\elvir\\source\\repos\\ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5\\AdminPanel.cs",
               "RelativeToolTip": "ProjektuppgiftGIK299_Grupp5\\AdminPanel.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T13:00:06.445Z",
               "EditorCaption": ""
@@ -53,20 +53,20 @@
               "RelativeDocumentMoniker": "ProjektuppgiftGIK299_Grupp5\\Booking.cs",
               "ToolTip": "C:\\Users\\elvir\\source\\repos\\ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5\\Booking.cs",
               "RelativeToolTip": "ProjektuppgiftGIK299_Grupp5\\Booking.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAkwA4AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwB0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T10:10:50.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\elvir\\source\\repos\\ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5\\Program.cs",
               "RelativeDocumentMoniker": "ProjektuppgiftGIK299_Grupp5\\Program.cs",
               "ToolTip": "C:\\Users\\elvir\\source\\repos\\ProjektuppgiftGIK299_Grupp5\\ProjektuppgiftGIK299_Grupp5\\Program.cs",
               "RelativeToolTip": "ProjektuppgiftGIK299_Grupp5\\Program.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAQwI0AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwEsAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T09:19:11.93Z",
               "EditorCaption": ""

@@ -81,7 +81,7 @@ class Program
                     break;
                 
                 case "6"://writes todaysbookings to a csv file
-                    adminPanel.WriteToFile();
+                    FileManager.WriteToFile(adminPanel.Bookings);
                     break;
                 
                 case "7"://exit program

@@ -1,6 +1,6 @@
 ﻿namespace ProjektuppgiftGIK299_Grupp5
 {
-    internal class Booking
+    public class Booking
     {
         public int BookingId { get; set; } // unique Id for the booking
         

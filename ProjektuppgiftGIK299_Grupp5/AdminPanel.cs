@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 using System.Text.RegularExpressions;
 
 namespace ProjektuppgiftGIK299_Grupp5;
@@ -6,7 +5,7 @@ namespace ProjektuppgiftGIK299_Grupp5;
 public class AdminPanel
 {
     //list to keep all the bookings
-    private readonly List<Booking> _bookings = new List<Booking>();
+    public readonly List<Booking> Bookings = new List<Booking>();
     
     //counter for numbers of bookings
     private int _bookingCounter = 1;
@@ -17,7 +16,7 @@ public class AdminPanel
         DateTime previousSlot = bookingDate.AddMinutes(-30);
         DateTime endTime = bookingDate.AddMinutes(30);
 
-        return _bookings.Any(booking => (booking.BookingDate >= previousSlot && booking.BookingDate <= endTime) ||
+        return Bookings.Any(booking => (booking.BookingDate >= previousSlot && booking.BookingDate <= endTime) ||
         (booking.BookingDate.AddMinutes(-30) <= endTime && booking.BookingDate.AddMinutes(30) >= previousSlot));
     }
     
@@ -119,7 +118,7 @@ public class AdminPanel
             int bookingId = _bookingCounter;
             Console.WriteLine();
             var booking = new Booking(bookingId,name, carRegNr, dateTime, service, comment);
-            _bookings.Add(booking);
+            Bookings.Add(booking);
             Console.WriteLine();
             Console.WriteLine("Bokningen lades till.");
             _bookingCounter++;
@@ -128,12 +127,12 @@ public class AdminPanel
             Console.Clear();
         }
 
-    }
+    }//TODO! KANSKE DELA UPP I MINDRE MODULER
     
     //metod to view bookings in bookinglist
     public void ViewBookings(DateTime date)
     {
-        var todaysBookings = _bookings.Where(b => b.BookingDate.Date == date).ToList();
+        var todaysBookings = Bookings.Where(b => b.BookingDate.Date == date).ToList();
         if (todaysBookings.Count == 0)
         {
             Console.WriteLine("There are no bookings for this date.");
@@ -155,10 +154,10 @@ public class AdminPanel
     }
     
     //method to find and change a booking
-    public void ChangeBooking(int bookingId)
+    public void ChangeBooking(int bookingId) //TODO! FIXA ANVÄNDAR INMATNING
     {
         //find the booking that matches the bookingId 
-        var bookingToEdit = _bookings.Find(b => b.BookingId == bookingId);
+        var bookingToEdit = Bookings.Find(b => b.BookingId == bookingId);
         if (bookingToEdit != null)
         {
             Console.WriteLine("""
@@ -236,10 +235,10 @@ public class AdminPanel
     //method to cancel and delete a booking
     public void CancelBooking(int bookingId)
     {
-        var bookingToCancel = _bookings.Find(b => b.BookingId == bookingId);
+        var bookingToCancel = Bookings.Find(b => b.BookingId == bookingId);
         if (bookingToCancel != null)
         {
-            _bookings.Remove(bookingToCancel);
+            Bookings.Remove(bookingToCancel);
             Console.WriteLine("Bokningen har blivit borttagen.");
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
@@ -251,7 +250,7 @@ public class AdminPanel
     //method to search booking by regnr
     public void SearchBookings(string custRegNr)
     {
-        var customerBooking = _bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
+        var customerBooking = Bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
 
         foreach (var booking in customerBooking)
         {
@@ -268,7 +267,7 @@ public class AdminPanel
     //adds 3 dummy bookings to the list 
     public void AddDummyBooking()
     {
-        _bookings.Add(new Booking(
+        Bookings.Add(new Booking(
             bookingId: _bookingCounter,
             customerName: "Bob",
             customerRegNr:"ABC123",
@@ -277,7 +276,7 @@ public class AdminPanel
             comment: "Bilen drar åt höger"
             ));
         _bookingCounter++;
-        _bookings.Add(new Booking(
+        Bookings.Add(new Booking(
             bookingId: _bookingCounter,
             customerName: "Sven",
             customerRegNr:"CBA321",
@@ -286,7 +285,7 @@ public class AdminPanel
             comment: "Hylsan till låsbultarna ligger i handskfacket"
         ));
         _bookingCounter++;
-        _bookings.Add(new Booking(
+        Bookings.Add(new Booking(
             bookingId: _bookingCounter,
             customerName: "Britt-Marie",
             customerRegNr:"HEJ666",
@@ -296,13 +295,7 @@ public class AdminPanel
         ));
 
     }
-
-    //calls the function in FileManager.cs
-    public void WriteToFile()
-    {
-        FileManager.WriteToFile(_bookings);
-    }
-
+    
     private static Services SelectService()
     {
         Console.WriteLine();

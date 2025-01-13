@@ -7,6 +7,10 @@ public class AdminPanel
     private List<Booking> bookings = new List<Booking>();
     private int bookingCounter = 0;
 
+
+
+
+
     public bool IsOverlapping(DateTime bookingDate)
     {
         DateTime previousSlot = bookingDate.AddMinutes(-30);

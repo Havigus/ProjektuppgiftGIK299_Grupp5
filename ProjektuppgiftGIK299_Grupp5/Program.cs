@@ -141,14 +141,18 @@ class Program
 
                 
                 case "2":
+                    Console.WriteLine();
                     Console.WriteLine("Vilken bokning vill du ändra på? Ange BokningsId");
                     int bookingIdToChange = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
                     adminPanel.ChangeBooking(bookingIdToChange);
                 break;
                 
                 case "3":
                     Console.WriteLine("Vilken bokning vill du ta bort? Ange BokningsId");
+                    Console.WriteLine();
                     int bookingIdToCancel = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
                     adminPanel.CancelBooking(bookingIdToCancel); 
                 break;
                 

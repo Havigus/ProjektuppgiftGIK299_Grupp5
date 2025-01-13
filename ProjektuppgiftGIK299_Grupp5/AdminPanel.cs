@@ -89,8 +89,11 @@ public class AdminPanel
                     break;
                 case "2":
                     //changes the regNr 
+                    Console.WriteLine();
                     Console.WriteLine("Ange ett nytt regnummer.");
+                    Console.WriteLine();
                     string newCustomerRegNr = Console.ReadLine();
+                    Console.WriteLine();
                     if (!string.IsNullOrWhiteSpace(newCustomerRegNr))
                     {
                         bookingToEdit.CustomerRegNr = newCustomerRegNr;
@@ -99,8 +102,11 @@ public class AdminPanel
                     break;
                 case "3":
                     //changes the date of the booking
+                    Console.WriteLine();
                     Console.WriteLine("Ange ett nytt datum och tid (YYYY, MM, DD, HH:MM,)");
+                    Console.WriteLine();
                     DateTime newBookingDate;
+                    Console.WriteLine();
                     while (!DateTime.TryParse(Console.ReadLine(), out newBookingDate))
                     {
                         Console.WriteLine();
@@ -110,6 +116,7 @@ public class AdminPanel
 
                     if (!newBookingDate.Equals(bookingToEdit.BookingDate) && !IsOverlapping(newBookingDate))
                     {
+                        Console.WriteLine();
                         bookingToEdit.BookingDate = newBookingDate;
                     }
 

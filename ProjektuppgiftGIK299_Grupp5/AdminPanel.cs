@@ -23,7 +23,6 @@ public class AdminPanel
         if (IsOverlapping(bookingDate))
         {
             Console.WriteLine("Error: Double booking! Please choose a different time.");
-            Console.Beep(1000, 200);
             Thread.Sleep(1000);
         }
 

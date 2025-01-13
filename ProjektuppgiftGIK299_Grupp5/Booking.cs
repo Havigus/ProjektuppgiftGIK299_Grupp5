@@ -34,7 +34,7 @@ namespace ProjektuppgiftGIK299_Grupp5
             return $"BookingId: {BookingId}" +
                    $"\nCustomer Name: {CustomerName}" +
                    $"\nCustomer Car RegNr: {CustomerRegNr}" +
-                   $"\nDate and time: {BookingDate}" +
+                   $"\nDate and time: {BookingDate:f}" +
                    $"\nService: {Service}" +
                    $"\nComment: {Comment}";
         }

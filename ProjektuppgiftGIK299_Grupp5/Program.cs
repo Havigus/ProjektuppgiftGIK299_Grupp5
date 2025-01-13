@@ -47,7 +47,7 @@ class Program
                         Thread.Sleep(200);
                         Console.WriteLine("Bilregistreringsnummer: ");
                         Console.WriteLine();
-                        string carRegNr = Console.ReadLine();
+                        string carRegNr = Console.ReadLine().ToUpper();
                         Console.WriteLine();
                         Thread.Sleep(200);
                         Console.WriteLine("Datum: (Skriv som yyyy mm dd och hh:mm)");
@@ -164,7 +164,7 @@ class Program
                     Console.WriteLine();
                     Console.WriteLine("Vilken bokning vill du se? Skriv kundens registreringsnummer: ");
                     Console.WriteLine();
-                    string regNr = string.Format(Console.ReadLine());
+                    string regNr = string.Format(Console.ReadLine().ToUpper());
                     Console.WriteLine();
                     adminPanel.SearchBookings(regNr);
                     Console.WriteLine();

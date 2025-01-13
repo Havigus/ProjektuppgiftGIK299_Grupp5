@@ -165,7 +165,7 @@ class Program
                     Thread.Sleep(1000);
                     break;
 
-                case "5": //sök efter kundID eller regNr
+                case "5":
                     Console.WriteLine();
                     Console.WriteLine("Vilken bokning vill du se? Skriv kundens registreringsnummer: ");
                     Console.WriteLine();

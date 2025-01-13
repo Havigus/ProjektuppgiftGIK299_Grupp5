@@ -52,10 +52,13 @@ public class AdminPanel
             Console.WriteLine();
             Console.WriteLine(booking);
             Console.WriteLine();
+            Thread.Sleep(1000);
+            break;
             
         }
         Console.WriteLine("Press any key to continue...");
         Console.ReadLine();
+        
     }
     //method to find and change a booking
     public void ChangeBooking(int bookingId)

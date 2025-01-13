@@ -75,7 +75,25 @@ public class AdminPanel
             service: Services.Hjulinställning,
             comment: "Bilen drar åt höger"
             ));
-        
+        bookingCounter++;
+        bookings.Add(new Booking(
+            bookingId: bookingCounter,
+            customerName: "Sven",
+            customerRegNr:"CBA321",
+            bookingDate: new DateTime(2025, 02, 10, 11, 30, 0),
+            service: Services.DäckbyteSäsong,
+            comment: "Hylsan till låsbultarna ligger i handskfacket"
+        ));
+        bookingCounter++;
+        bookings.Add(new Booking(
+            bookingId: bookingCounter,
+            customerName: "Britt-Marie",
+            customerRegNr:"HEJ666",
+            bookingDate: new DateTime(2025, 02, 04, 8, 0, 0),
+            service: Services.EfterdragningDäck,
+            comment: ""
+        ));
+
     }
 
 }

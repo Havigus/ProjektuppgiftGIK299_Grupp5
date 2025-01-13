@@ -8,7 +8,7 @@ class Program
     {
        AdminPanel adminPanel = new();
        
-       
+       adminPanel.AddDummyBooking();
 
         bool contRunning = true;
 

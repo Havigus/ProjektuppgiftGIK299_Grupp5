@@ -27,7 +27,7 @@ class Program
                 "\n\n\t2. Ändra en bokning" +
                 "\n\n\t3. Ta bort en bokning" +
                 "\n\n\t4. Se dagens bokningar" +
-                "\n\n\t5. Sök efter KundID eller RegNr" +
+                "\n\n\t5. Sök efter bokning med registreringsnummer" +
                 "\n\n\t6. Avsluta programmet");
             Thread.Sleep(500);
             Console.WriteLine();
@@ -155,18 +155,22 @@ class Program
                 break;
                 
                 case "4":
-                    //kod för val fyra, sök efter kundID eller regNr
                     Console.WriteLine();
-                    Console.WriteLine("Vilket datum vill du se? Skriv yyyy mm dd: ");
-                    Console.WriteLine();
-                    DateTime userDate = DateTime.Parse(Console.ReadLine());
+                    DateTime userDate = DateTime.Today;
                     Console.WriteLine();
                     adminPanel.ViewBookings(userDate);
-                    Console.WriteLine();
                     Thread.Sleep(1000);
                     break;
 
-                case "5":
+                case "5": //sök efter kundID eller regNr
+                    Console.WriteLine();
+                    Console.WriteLine("Vilken bokning vill du se? Skriv kundens registreringsnummer: ");
+                    Console.WriteLine();
+                    string regNr = string.Format(Console.ReadLine());
+                    Console.WriteLine();
+                    adminPanel.SearchBookings(regNr);
+                    Console.WriteLine();
+                    Thread.Sleep(1000);
 
                     break;
                 

@@ -6,6 +6,7 @@ public class AdminPanel
 {
     private List<Booking> bookings = new List<Booking>();
     private int bookingCounter = 0;
+
     public bool IsOverlapping(DateTime bookingDate)
     {
         DateTime previousSlot = bookingDate.AddMinutes(-30);
@@ -52,6 +53,18 @@ public class AdminPanel
             Console.WriteLine(booking);
             Console.WriteLine();
             
+        }
+    }
+
+    public void SearchBookings(string custRegNr)
+    {
+        var customerBooking = bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
+
+        foreach (var booking in customerBooking)
+        {
+            Console.WriteLine();
+            Console.WriteLine(booking);
+            Console.WriteLine();
         }
     }
 

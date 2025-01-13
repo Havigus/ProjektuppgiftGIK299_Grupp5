@@ -204,5 +204,16 @@ public class AdminPanel
         ));
 
     }
+    public void SearchBookings(string custRegNr)
+    {
+        var customerBooking = bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
+
+        foreach (var booking in customerBooking)
+        {
+            Console.WriteLine();
+            Console.WriteLine(booking);
+            Console.WriteLine();
+        }
+    }
 
 }

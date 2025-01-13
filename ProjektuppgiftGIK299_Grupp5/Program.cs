@@ -25,10 +25,10 @@ class Program
             Console.WriteLine();
             Console.WriteLine("\t1. Skapa en bokning" +
                 "\n\n\t2. Ändra en bokning" +
-                "\n\n\t3. Se dagens bokningar" +
-                "\n\n\t5. Se veckans bokningar" +
-                "\n\n\t4. Sök efter KundID eller RegNr" +
-                "\n\n\t5. Avsluta programmet");
+                "\n\n\t3. Ta bort en bokning" +
+                "\n\n\t4. Se dagens bokningar" +
+                "\n\n\t5. Sök efter KundID eller RegNr" +
+                "\n\n\t6. Avsluta programmet");
             Thread.Sleep(500);
             Console.WriteLine();
             Console.WriteLine("Gör ditt val med en siffra: ");
@@ -140,19 +140,12 @@ class Program
 
                 
                 case "2":
-                    //kod för val två
+                    //kod för val två, ändra
                 break;
                 
                 case "3":
-                    //kod för val tre
-                    Console.WriteLine();
-                    Console.WriteLine("Vilket datum vill du se? Skriv yyyy mm dd: ");
-                    Console.WriteLine();
-                    DateTime userDate = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine();
-                    adminPanel.ViewBookings(userDate);
-                    Console.WriteLine();
-                    Thread.Sleep(1000);
+                    //kod för val tre, ta bort en bokning
+
 
                     
 
@@ -162,10 +155,22 @@ class Program
                 break;
                 
                 case "4":
-                    //kod för val fyra
-                break;
+                    //kod för val fyra, sök efter kundID eller regNr
+                    Console.WriteLine();
+                    Console.WriteLine("Vilket datum vill du se? Skriv yyyy mm dd: ");
+                    Console.WriteLine();
+                    DateTime userDate = DateTime.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    adminPanel.ViewBookings(userDate);
+                    Console.WriteLine();
+                    Thread.Sleep(1000);
+                    break;
 
                 case "5":
+
+                    break;
+                
+                case "6":
                     Console.WriteLine("Välkommen åter!");
                     Thread.Sleep(1000);
                     contRunning = false;

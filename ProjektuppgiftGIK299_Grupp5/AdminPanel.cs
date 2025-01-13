@@ -5,7 +5,7 @@ namespace ProjektuppgiftGIK299_Grupp5;
 public class AdminPanel
 {
     private List<Booking> bookings = new List<Booking>();
-    private int bookingCounter = 0;
+    private int bookingCounter = 1;
     public bool IsOverlapping(DateTime bookingDate)
     {
         DateTime previousSlot = bookingDate.AddMinutes(-30);
@@ -63,6 +63,19 @@ public class AdminPanel
     public void CancelBooking()
     {
         //kod för att ta bort en bokning
+    }
+
+    public void AddDummyBooking()
+    {
+        bookings.Add(new Booking(
+            bookingId: bookingCounter,
+            customerName: "Bob",
+            customerRegNr:"ABC123",
+            bookingDate: new DateTime(2025, 02, 02, 10, 0, 0),
+            service: Services.Hjulinställning,
+            comment: "Bilen drar åt höger"
+            ));
+        
     }
 
 }

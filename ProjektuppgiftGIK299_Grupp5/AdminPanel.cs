@@ -1,22 +1,23 @@
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Channels;
-
 namespace ProjektuppgiftGIK299_Grupp5;
 
 public class AdminPanel
 {
-    private List<Booking> bookings = new List<Booking>();
-    private int bookingCounter = 1;
+    //list to keep all the bookings
+    private readonly List<Booking> _bookings = new List<Booking>();
+    //counter for numbers of bookings
+    private int _bookingCounter = 1;
+    
+    //method the check if booking time is available
     public bool IsOverlapping(DateTime bookingDate)
     {
         DateTime previousSlot = bookingDate.AddMinutes(-30);
-        DateTime startTime = bookingDate;
         DateTime endTime = bookingDate.AddMinutes(30);
 
-        return bookings.Any(booking => (booking.BookingDate >= previousSlot && booking.BookingDate <= endTime) ||
+        return _bookings.Any(booking => (booking.BookingDate >= previousSlot && booking.BookingDate <= endTime) ||
         (booking.BookingDate.AddMinutes(-30) <= endTime && booking.BookingDate.AddMinutes(30) >= previousSlot));
     }
-
+    
+    //method to add booking to list
     public void AddBooking(string customerName, string customerRegNr, DateTime bookingDate, Services services, string comment)
     {
         
@@ -29,18 +30,22 @@ public class AdminPanel
 
         else
         {
-            int bookingId = bookingCounter;
+            int bookingId = _bookingCounter;
             var booking = new Booking(bookingId, customerName, customerRegNr, bookingDate, services, comment);
-            bookings.Add(booking);
+            _bookings.Add(booking);
             Console.WriteLine();
-            Console.WriteLine("Booking added successfully.");
-            bookingCounter++;
+            Console.WriteLine("Bokningen lades till.");
+            _bookingCounter++;
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
+    
     //metod to view bookings in bookinglist
     public void ViewBookings(DateTime date)
     {
-        var todaysBookings = bookings.Where(b => b.BookingDate.Date == date).ToList();
+        var todaysBookings = _bookings.Where(b => b.BookingDate.Date == date).ToList();
         if (todaysBookings.Count == 0)
         {
             Console.WriteLine("There are no bookings for this date.");
@@ -53,18 +58,19 @@ public class AdminPanel
             Console.WriteLine(booking);
             Console.WriteLine();
             Thread.Sleep(1000);
-            break;
             
         }
         Console.WriteLine("Press any key to continue...");
         Console.ReadLine();
+        Console.Clear();
         
     }
+    
     //method to find and change a booking
     public void ChangeBooking(int bookingId)
     {
         //find the booking that matches the bookingId 
-        var bookingToEdit = bookings.Find(b => b.BookingId == bookingId);
+        var bookingToEdit = _bookings.Find(b => b.BookingId == bookingId);
         if (bookingToEdit != null)
         {
             Console.WriteLine("""
@@ -167,23 +173,17 @@ public class AdminPanel
                     }
                     break;
             }
-
-
-
-
-
-
-
-
+            
         }
     }
+    
     //method to cancel and delete a booking
     public void CancelBooking(int bookingId)
     {
-        var bookingToCancel = bookings.Find(b => b.BookingId == bookingId);
+        var bookingToCancel = _bookings.Find(b => b.BookingId == bookingId);
         if (bookingToCancel != null)
         {
-            bookings.Remove(bookingToCancel);
+            _bookings.Remove(bookingToCancel);
             Console.WriteLine("Bokningen har blivit borttagen.");
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
@@ -192,40 +192,42 @@ public class AdminPanel
         Console.WriteLine("Det finns ingen bokning med det bokningsid.");
     }
     
-    //3 dummy bookings 
+    //adds 3 dummy bookings to the list 
     public void AddDummyBooking()
     {
-        bookings.Add(new Booking(
-            bookingId: bookingCounter,
+        _bookings.Add(new Booking(
+            bookingId: _bookingCounter,
             customerName: "Bob",
             customerRegNr:"ABC123",
-            bookingDate: new DateTime(2025, 02, 02, 10, 0, 0),
+            bookingDate: DateTime.Today.AddHours(11),
             service: Services.Hjulinställning,
             comment: "Bilen drar åt höger"
             ));
-        bookingCounter++;
-        bookings.Add(new Booking(
-            bookingId: bookingCounter,
+        _bookingCounter++;
+        _bookings.Add(new Booking(
+            bookingId: _bookingCounter,
             customerName: "Sven",
             customerRegNr:"CBA321",
-            bookingDate: new DateTime(2025, 02, 10, 11, 30, 0),
+            bookingDate: DateTime.Today.AddHours(11).AddMinutes(30), 
             service: Services.DäckbyteSäsong,
             comment: "Hylsan till låsbultarna ligger i handskfacket"
         ));
-        bookingCounter++;
-        bookings.Add(new Booking(
-            bookingId: bookingCounter,
+        _bookingCounter++;
+        _bookings.Add(new Booking(
+            bookingId: _bookingCounter,
             customerName: "Britt-Marie",
             customerRegNr:"HEJ666",
-            bookingDate: new DateTime(2025, 02, 04, 8, 0, 0),
+            bookingDate: DateTime.Today.AddHours(12).AddMinutes(30),
             service: Services.EfterdragningDäck,
             comment: ""
         ));
 
     }
+    
+    //method to search booking by regnr
     public void SearchBookings(string custRegNr)
     {
-        var customerBooking = bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
+        var customerBooking = _bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
 
         foreach (var booking in customerBooking)
         {
@@ -233,6 +235,16 @@ public class AdminPanel
             Console.WriteLine(booking);
             Console.WriteLine();
         }
+
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.Clear();
+    }
+
+    //calls the function in FileManager.cs
+    public void WriteToFile()
+    {
+        FileManager.WriteToFile(_bookings);
     }
 
 }

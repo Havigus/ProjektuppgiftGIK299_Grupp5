@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjektuppgiftGIK299_Grupp5
+﻿namespace ProjektuppgiftGIK299_Grupp5
 {
+    //enum to keep the services provided by the tire shop
     public enum Services
     {
         DäckbyteSäsong = 1,

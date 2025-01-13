@@ -8,11 +8,10 @@ class Program
     {
        AdminPanel adminPanel = new();
        
+       //adds dummybookings to populate the list 
        adminPanel.AddDummyBooking();
 
         bool contRunning = true;
-
-
         while (contRunning)
         {
 
@@ -142,7 +141,9 @@ class Program
 
                 
                 case "2":
-                    //kod för val två, ändra
+                    Console.WriteLine("Vilken bokning vill du ändra på? Ange BokningsId");
+                    int bookingId = int.Parse(Console.ReadLine());
+                    adminPanel.ChangeBooking(bookingId);
                 break;
                 
                 case "3":

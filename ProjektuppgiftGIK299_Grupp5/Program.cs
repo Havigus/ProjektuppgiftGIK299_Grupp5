@@ -10,7 +10,6 @@ class Program
 
         bool contRunning = true;
 
-        bool anotherService = true;
 
         while (contRunning)
         {
@@ -63,8 +62,7 @@ class Program
 
                         //TODO! Lägg denhär menyn i en while loop så man kan välja fler services. Behövs nog en List för att hålla valen
                         //alt att man bara tar servicen som en string och skippar enum
-                        while (anotherService)
-                        {
+
                             Console.WriteLine();
                             Console.WriteLine("""
                                           Vilken tjänst?
@@ -91,20 +89,7 @@ class Program
                                 {
                                     Console.WriteLine();
                                     service = (Services)num;
-                                    Console.WriteLine();
-                                    Console.WriteLine("Vill du lägga till en annan tjänst? Y/N");
-                                    Console.WriteLine();
-                                    string moreService = Console.ReadLine();
-                                    if (moreService == "Y" || moreService == "y")
-                                    {
-                                        Console.WriteLine();
-                                    }
-
-                                    else
-                                    {
-                                        anotherService = false;
-                                    }
-
+                                break;
 
                                 }
                                 else
@@ -113,7 +98,6 @@ class Program
                                     Console.WriteLine("Ogiltigt val.");
                                 }
                             }
-                        }
                         string comment = null;
                         Console.WriteLine();
                         Console.WriteLine("Vill du lägga till en kommentar? Y/N");

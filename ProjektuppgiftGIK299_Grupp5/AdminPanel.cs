@@ -37,7 +37,7 @@ public class AdminPanel
             bookingCounter++;
         }
     }
-
+    //metod to view bookings in bookinglist
     public void ViewBookings(DateTime date)
     {
         var todaysBookings = bookings.Where(b => b.BookingDate.Date == date).ToList();
@@ -167,10 +167,19 @@ public class AdminPanel
 
         }
     }
-
-    public void CancelBooking()
+    //method to cancel and delete a booking
+    public void CancelBooking(int bookingId)
     {
-        //kod för att ta bort en bokning
+        var bookingToCancel = bookings.Find(b => b.BookingId == bookingId);
+        if (bookingToCancel != null)
+        {
+            bookings.Remove(bookingToCancel);
+            Console.WriteLine("Bokningen har blivit borttagen.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
+        }
+
+        Console.WriteLine("Det finns ingen bokning med det bokningsid.");
     }
     
     //3 dummy bookings 

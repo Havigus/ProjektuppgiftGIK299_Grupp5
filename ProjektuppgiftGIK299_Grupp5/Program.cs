@@ -41,92 +41,7 @@ class Program
             switch (Console.ReadKey(intercept: true).KeyChar.ToString())
             {
                 case "1"://add a booking
-                    while (true)
-                    {
-                        Console.Write("Kundnamn: ");
-                        string name = Console.ReadLine();
-                        Thread.Sleep(200);
-                        Console.Write("Bilregistreringsnummer: ");
-                        string carRegNr = Console.ReadLine()?.ToUpper();
-                        Thread.Sleep(200);
-                        Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
-                        DateTime dateTime;
-                        Thread.Sleep(200);
-                        while (!DateTime.TryParse(Console.ReadLine(), out dateTime))
-                        {
-                            Console.WriteLine("\nOgiltigt datum och tid.");
-                            Thread.Sleep(1000);
-                            Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
-                        }
-
-                        //TODO! Lägg denhär menyn i en while loop så man kan välja fler services. Behövs nog en List för att hålla valen
-                        //alt att man bara tar servicen som en string och skippar enum
-
-                            Console.WriteLine();
-                            Console.WriteLine("""
-                                          Vilken tjänst vill du boka in?
-
-                                            1. DäckbyteSäsong
-                                            2. DäckbyteNyaDäck
-                                            3. Hjulinställning
-                                            4. Däckhotell
-                                            5. EfterdragningDäck
-                                            6. BeställaDäck
-                                          """);
-                            
-                            Services service;
-                            while (true)
-                            {
-                                Console.Write("\nAnge en siffra: ");
-                                var key = Console.ReadKey(intercept: true).KeyChar;
-
-                                if (int.TryParse(key.ToString(), out int num) && Enum.IsDefined(typeof(Services), num))
-                                {
-                                    Console.WriteLine();
-                                    service = (Services)num;
-                                break;
-
-                                }
-                                Console.WriteLine("\nOgiltigt val.");
-                            }
-                            
-                        string comment = null;
-                        
-                        Console.WriteLine("\nVill du lägga till en kommentar? Y/N");
-                        if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
-                        {
-                            Console.Write("\nSkriv in din kommentar: ");
-                            comment = Console.ReadLine();
-                            Thread.Sleep(1000);
-                        }
-                        
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine($"""
-                                          Bekräfta uppgifterna.
-
-                                          Kundnamn: {name}
-
-                                          Bilregistreringsnummer: {carRegNr}
-
-                                          Datum och tid: {dateTime}
-
-                                          Service: {service}
-
-                                          Kommentar: {comment}
-                                          
-
-                                          Stämmer det här? Y/N
-                                          """);
-                        Console.WriteLine();
-                        if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
-                        {
-                            Console.WriteLine();
-                            adminPanel.AddBooking(name, carRegNr, dateTime, service, comment);
-                            break;
-                        }
-
-                    }
+                    adminPanel.AddBooking();
                     break;
                 
                 case "2"://change a booking
@@ -183,4 +98,6 @@ class Program
 
         
     }
+
+    
 }

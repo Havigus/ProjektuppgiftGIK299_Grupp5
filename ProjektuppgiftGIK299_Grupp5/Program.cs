@@ -10,6 +10,8 @@ class Program
 
         bool contRunning = true;
 
+        bool anotherService = true;
+
         while (contRunning)
         {
 
@@ -48,7 +50,7 @@ class Program
                         string carRegNr = Console.ReadLine();
                         Console.WriteLine();
                         Thread.Sleep(200);
-                        Console.WriteLine("Datum: (Skriv som yyyy mm dd och hh:mm)"); //TODO Flytta kod så att den kollar direkt vid inmatning om tiden är upptagen
+                        Console.WriteLine("Datum: (Skriv som yyyy mm dd och hh:mm)");
                         Console.WriteLine();
                         DateTime dateTime;
                         Thread.Sleep(200);
@@ -61,8 +63,10 @@ class Program
 
                         //TODO! Lägg denhär menyn i en while loop så man kan välja fler services. Behövs nog en List för att hålla valen
                         //alt att man bara tar servicen som en string och skippar enum
-                        Console.WriteLine();
-                        Console.WriteLine("""
+                        while (anotherService)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("""
                                           Vilken tjänst?
 
                                           1. DäckbyteSäsong
@@ -77,25 +81,39 @@ class Program
                                           
                                           6. BeställaDäck
                                           """);
-                        Services service;
-                        while (true)
-                        {
-                            Console.WriteLine();
-                            var key = Console.ReadKey(intercept: true).KeyChar;
+                            Services service;
+                            while (true)
+                            {
+                                Console.WriteLine();
+                                var key = Console.ReadKey(intercept: true).KeyChar;
 
-                            if (int.TryParse(key.ToString(), out int num) && Enum.IsDefined(typeof(Services), num))
-                            {
-                                Console.WriteLine();
-                                service = (Services)num;
-                                break;
-                            }
-                            else
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Ogiltigt val.");
+                                if (int.TryParse(key.ToString(), out int num) && Enum.IsDefined(typeof(Services), num))
+                                {
+                                    Console.WriteLine();
+                                    service = (Services)num;
+                                    Console.WriteLine();
+                                    Console.WriteLine("Vill du lägga till en annan tjänst? Y/N");
+                                    Console.WriteLine();
+                                    string moreService = Console.ReadLine();
+                                    if (moreService == "Y" || moreService == "y")
+                                    {
+                                        Console.WriteLine();
+                                    }
+
+                                    else
+                                    {
+                                        anotherService = false;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Ogiltigt val.");
+                                }
                             }
                         }
-
                         string comment = null;
                         Console.WriteLine();
                         Console.WriteLine("Vill du lägga till en kommentar? Y/N");
@@ -134,8 +152,8 @@ class Program
                         }
 
                     }
-                    
                     break;
+
                 
                 case "2":
                     //kod för val två

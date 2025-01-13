@@ -60,6 +60,52 @@ public class AdminPanel
         }
     }
 
+    public void ChangeBooking()
+    {
+        //kod för att ändra på en bookning
+    }
+
+    public void CancelBooking()
+    {
+        //kod för att ta bort en bokning
+    }
+
+
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public void SearchBookings(string custRegNr)
     {
         var customerBooking = bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
@@ -70,16 +116,6 @@ public class AdminPanel
             Console.WriteLine(booking);
             Console.WriteLine();
         }
-    }
-
-    public void ChangeBooking()
-    {
-        //kod för att ändra på en bookning
-    }
-
-    public void CancelBooking()
-    {
-        //kod för att ta bort en bokning
     }
 
 }

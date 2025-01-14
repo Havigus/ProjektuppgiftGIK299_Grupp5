@@ -76,9 +76,10 @@ class Program
                     Console.WriteLine("1. Registreringsnummer" +
                         "\n2. Kundens namn" +
                         "\n3. BokningsID");
-                    string searchBooking = Console.ReadKey(intercept: true).KeyChar.ToString()
+                    string searchBooking = Console.ReadKey(intercept: true).KeyChar.ToString();
                     if (searchBooking == "1")
                     {
+                        Console.WriteLine("\nSkriv in kundens registreringsnummer: ");
                         string regNr = string.Format(Console.ReadLine().ToUpper());
                         Console.WriteLine();
                         adminPanel.SearchBookings(regNr);
@@ -87,6 +88,7 @@ class Program
                     }
                     else if (searchBooking == "2")
                     {
+                        Console.WriteLine("\nSkriv in kundens namn: ");
                         string customerName = string.Format(Console.ReadLine().ToUpper());
                         Console.WriteLine();
                         adminPanel.SearchBookings(customerName);
@@ -95,6 +97,7 @@ class Program
                     }
                     else if (searchBooking == "3")
                     {
+                        Console.WriteLine("\nSkriv in kundens bokningsID: ");
                         string bookingID = string.Format(Console.ReadLine().ToUpper());
                         Console.WriteLine();
                         adminPanel.SearchBookings(bookingID);

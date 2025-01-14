@@ -46,7 +46,8 @@ class Program
                 
                 case "2"://change a booking
                     Console.WriteLine();
-                    Console.WriteLine("Vilken bokning vill du ändra på? Ange BokningsId");
+                    Console.WriteLine("Vilken bokning vill du ändra på?");
+                    Console.Write("Ange BokningsId: ");
                     int bookingIdToChange = int.Parse(Console.ReadLine());
                     Console.WriteLine();
                     adminPanel.ChangeBooking(bookingIdToChange);
@@ -104,7 +105,7 @@ class Program
 
                 
                 case "6"://writes todaysbookings to a csv file
-                    FileManager.WriteToFile(adminPanel.Bookings);
+                   // FileManager.WriteToFile(adminPanel.Bookings);
                     break;
                 
                 case "7"://exit program

@@ -54,8 +54,8 @@ class Program
                 break;
                 
                 case "3"://remove a booking
-                    Console.WriteLine("Vilken bokning vill du ta bort? Ange BokningsId");
-                    Console.WriteLine();
+                    Console.WriteLine("Vilken bokning vill du ta bort?");
+                    Console.Write("Ange BokningsId: ");
                     int bookingIdToCancel = int.Parse(Console.ReadLine());
                     Console.WriteLine();
                     adminPanel.CancelBooking(bookingIdToCancel); 

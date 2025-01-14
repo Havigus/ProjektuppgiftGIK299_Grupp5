@@ -54,21 +54,15 @@ public abstract class ValidInput
         Console.Write("KundNamn: ");
         string name;
         //prompts the user until a valid name is entered
-        while (!string.IsNullOrEmpty(name = Console.ReadLine()))
+        while (string.IsNullOrWhiteSpace(name = Console.ReadLine()) || 
+               !Regex.IsMatch(name, @"^[A-Za-zåäöÅÄÖéèÉÈçÇ' -]+$"))
         {
-            
-            //checks to se if it only contains letters
-            if (Regex.IsMatch(name, @"^[A-Za-zåäöÅÄÖéèÉÈçÇ' -]+$"))
-            {
-                //change the first leter to uppercase
-                name = char.ToUpper(name[0]) + name.Substring(1);
-                break;
-            }
-            Console.WriteLine("Ogiltigt inmatning");
+            Console.WriteLine("Ogiltigt inmatning. Namnet kan endast innehålla bokstäver och inte lämnas tomt.");
             Thread.Sleep(2000);
             Console.Write("KundNamn: ");
         }
-
+        //change the first leter to uppercase
+        name = char.ToUpper(name[0]) + name.Substring(1);
         return name;
     }
 
@@ -76,15 +70,11 @@ public abstract class ValidInput
     {
         Console.Write("Bilregistreringsnummer: ");
         string carRegNr;
-        //prompts the user for a regnr
-        while (!string.IsNullOrEmpty(carRegNr = Console.ReadLine().ToUpper()))
+        
+        //prompts the user for a regnr and checks that its not empty or not valid
+        while (string.IsNullOrWhiteSpace(carRegNr = Console.ReadLine().ToUpper()) ||
+               !Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$|^[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
         {
-            
-            //checks to se that a valid regnr was put in
-            if (Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$|^[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
-            {
-                break;
-            }
             Console.WriteLine("Ogitigt inmatning. Exempel på giltig inmatning. ABC123 eller ABC12W");
             Thread.Sleep(2000);
             Console.Write("Bilregistreringsnummer: ");

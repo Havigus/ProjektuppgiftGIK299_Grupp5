@@ -45,7 +45,7 @@ public class AdminPanel
         Console.WriteLine();
         if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
         {
-            int bookingId = _bookingCounter;
+            int bookingId = ++_bookingCounter;
             Console.WriteLine();
             var booking = new Booking(bookingId,name, carRegNr, dateTime, service, comment);
             Bookings.Add(booking);
@@ -94,16 +94,21 @@ public class AdminPanel
         //find the booking that matches the specified bookingId 
         var bookingToEdit = Bookings.Find(b => b.BookingId == bookingId);
         
+        //displays the booking before the change
+        Console.Clear();
+        Console.WriteLine(bookingToEdit);
+        Console.WriteLine();
+        
         //if booking is found, present user with options on what to change
         if (bookingToEdit != null)
         {
             Console.WriteLine("""
-                 Ange med sifra vad du vill ändra på.
-                  1. Namn
-                  2. RegNummer
-                  3. Datum och tid
-                  4. Tjänst
-                  5. Kommentar
+                Ange med sifra vad du vill ändra på.
+                1. Namn
+                2. RegNummer
+                3. Datum och tid
+                4. Tjänst
+                5. Kommentar
                 """);
             switch (Console.ReadKey(intercept: true).KeyChar.ToString())
             {

@@ -73,14 +73,19 @@ class Program
 
                 case "5"://search booking by regnr, customername or bookingID
                     Console.Clear();
+                    
+                    //displays a menu for the user
                     Console.WriteLine("Hur vill du söka? Välj med en siffra: ");
                     Console.WriteLine();
                     Console.WriteLine("1. Registreringsnummer" +
                         "\n2. Kundens namn" +
                         "\n3. BokningsID" +
                         "\n4. Sök med datum");
-                    string searchBooking = Console.ReadKey(intercept: true).KeyChar.ToString();
-                    if (searchBooking == "1")
+                    
+                    //get the user choice 
+                    string searchChoice = Console.ReadKey(intercept: true).KeyChar.ToString();
+                    
+                    if (searchChoice == "1")
                     {
                         Console.WriteLine();
                         string regNr = ValidInput.GetValidRegNr();
@@ -89,7 +94,7 @@ class Program
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchBooking == "2")
+                    else if (searchChoice == "2")
                     {
                         Console.WriteLine();
                         string customerName = ValidInput.GetValidName();
@@ -98,7 +103,7 @@ class Program
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchBooking == "3")
+                    else if (searchChoice == "3")
                     {
                         Console.WriteLine();
                         int bookingId = ValidInput.GetValidId();
@@ -107,7 +112,7 @@ class Program
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchBooking == "4")
+                    else if (searchChoice == "4")
                     {
                         Console.Write("\nSkriv in ett datum (yyyy mm dd): ");
                         DateTime searchDate;

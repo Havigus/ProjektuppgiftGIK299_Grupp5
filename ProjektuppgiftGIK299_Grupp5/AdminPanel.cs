@@ -198,7 +198,7 @@ public class AdminPanel
         Console.Clear();
     }
     
-    public void SearchBookingCustName(string custName)
+    public void SearchBookingCustName(string custName) //method to search bookings by customers name
     {
         //finds the bookings that matches the specified name
         var customerBookingName = Bookings.Where(b => b.CustomerName.ToUpper() == custName.ToUpper()).ToList();
@@ -223,7 +223,7 @@ public class AdminPanel
         Console.Clear();
     }
     
-    public void SearchBookingBookingID(int custID)
+    public void SearchBookingBookingID(int custID) //method to search bookings by booking id
     {
         //finds the bookings that matches the specified bookingId
         var customerBookingID = Bookings.Where(b => b.BookingId == custID).ToList();
@@ -248,8 +248,8 @@ public class AdminPanel
         Console.Clear();
     }
 
-    //adds 3 dummy bookings to the list 
-    public void AddDummyBooking()
+    
+    public void AddDummyBooking() //adds 3 dummy bookings to the list 
     {
         Bookings.Add(new Booking(
             bookingId: _bookingCounter,

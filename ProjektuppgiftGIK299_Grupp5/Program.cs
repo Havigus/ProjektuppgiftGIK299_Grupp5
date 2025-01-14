@@ -1,4 +1,6 @@
-﻿namespace ProjektuppgiftGIK299_Grupp5;
+﻿using System.ComponentModel;
+
+namespace ProjektuppgiftGIK299_Grupp5;
 
 class Program
 {
@@ -82,25 +84,25 @@ class Program
                         Console.WriteLine("\nSkriv in kundens registreringsnummer: ");
                         string regNr = string.Format(Console.ReadLine().ToUpper());
                         Console.WriteLine();
-                        adminPanel.SearchBookings(regNr);
+                        adminPanel.SearchBookingRegNr(regNr);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
                     else if (searchBooking == "2")
                     {
                         Console.WriteLine("\nSkriv in kundens namn: ");
-                        string customerName = string.Format(Console.ReadLine().ToUpper());
+                        string customerName = string.Format(Console.ReadLine());
                         Console.WriteLine();
-                        adminPanel.SearchBookings(customerName);
+                        adminPanel.SearchBookingCustName(customerName);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
                     else if (searchBooking == "3")
                     {
                         Console.WriteLine("\nSkriv in kundens bokningsID: ");
-                        string bookingID = string.Format(Console.ReadLine().ToUpper());
+                        int bookingID = Int32.Parse(Console.ReadLine());
                         Console.WriteLine();
-                        adminPanel.SearchBookings(bookingID);
+                        adminPanel.SearchBookingBookingID(bookingID);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }

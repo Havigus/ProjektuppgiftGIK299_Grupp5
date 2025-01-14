@@ -168,13 +168,13 @@ public class AdminPanel
 
         Console.WriteLine("Det finns ingen bokning med det bokningsid.");
     }
-    
-    //method to search booking by regnr
-    public void SearchBookings(string custRegNr)
-    {
-        var customerBooking = Bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
 
-        foreach (var booking in customerBooking)
+    //method to search booking by regnr
+    public void SearchBookingRegNr(string custRegNr)
+    {
+        var customerBookingRegNr = Bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();
+
+        foreach (var booking in customerBookingRegNr)
         {
             Console.WriteLine();
             Console.WriteLine(booking);
@@ -185,7 +185,35 @@ public class AdminPanel
         Console.ReadKey();
         Console.Clear();
     }
-    
+    public void SearchBookingCustName(string custName)
+    {
+        var customerBookingName = Bookings.Where(b => b.CustomerName.ToUpper() == custName.ToUpper()).ToList();
+
+        foreach (var booking in customerBookingName)
+        {
+            Console.WriteLine();
+            Console.WriteLine(booking);
+            Console.WriteLine();
+        }
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.Clear();
+    }
+    public void SearchBookingBookingID(int custID)
+    {
+        var customerBookingID = Bookings.Where(b => b.BookingId == custID).ToList();
+
+        foreach (var booking in customerBookingID)
+        {
+            Console.WriteLine();
+            Console.WriteLine(booking);
+            Console.WriteLine();
+        }
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.Clear();
+    }
+
     //adds 3 dummy bookings to the list 
     public void AddDummyBooking()
     {

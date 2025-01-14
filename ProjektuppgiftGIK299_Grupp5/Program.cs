@@ -71,7 +71,7 @@ class Program
                     Thread.Sleep(1000);
                     break;
 
-                case "5"://search booking by regnr, customername or bookingID
+                case "5"://search booking by regnr, customername, bookingID or date
                     Console.WriteLine();
                     Console.WriteLine("Hur vill du söka? Välj med en siffra: ");
                     Console.WriteLine();

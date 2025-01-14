@@ -63,7 +63,7 @@ public class AdminPanel
     }
     
     //metod to view bookings in bookinglist
-    public void ViewBookings(DateTime date)
+    public void ViewBookingsByDate(DateTime date)
     {
         var todaysBookings = Bookings.Where(b => b.BookingDate.Date == date).ToList();
         if (todaysBookings.Count == 0)
@@ -169,7 +169,7 @@ public class AdminPanel
         Console.WriteLine("Det finns ingen bokning med det bokningsid.");
     }
 
-    //method to search booking by regnr
+    //method to search booking by a specific date, customer regnr, customer name or customer bookingID
     public void SearchBookingRegNr(string custRegNr)
     {
         var customerBookingRegNr = Bookings.Where(b => b.CustomerRegNr == custRegNr).ToList();

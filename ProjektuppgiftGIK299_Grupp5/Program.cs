@@ -67,7 +67,7 @@ class Program
                     Console.WriteLine();
                     DateTime userDate = DateTime.Today;
                     Console.WriteLine();
-                    adminPanel.ViewBookings(userDate);
+                    adminPanel.ViewBookingsByDate(userDate);
                     Thread.Sleep(1000);
                     break;
 
@@ -77,7 +77,8 @@ class Program
                     Console.WriteLine();
                     Console.WriteLine("1. Registreringsnummer" +
                         "\n2. Kundens namn" +
-                        "\n3. BokningsID");
+                        "\n3. BokningsID" +
+                        "\n4. Sök med datum");
                     string searchBooking = Console.ReadKey(intercept: true).KeyChar.ToString();
                     if (searchBooking == "1")
                     {
@@ -105,6 +106,15 @@ class Program
                         adminPanel.SearchBookingBookingID(bookingID);
                         Console.WriteLine();
                         Thread.Sleep(1000);
+                    }
+                    else if (searchBooking == "4")
+                    {
+                        Console.WriteLine("\nSkriv in ett giltigt datum (yyyy mm dd): ");
+                        DateTime searchDate = DateTime.Parse(Console.ReadLine());
+                        Console.WriteLine();
+                        adminPanel.ViewBookingsByDate(searchDate);
+                        Thread.Sleep(1000);
+
                     }
                     break;
 

@@ -108,7 +108,7 @@ class Program
 
                 
                 case "6"://writes todaysbookings to a csv file
-                   // FileManager.WriteToFile(adminPanel.Bookings);
+                   FileManager.WriteToFile();
                     break;
                 
                 case "7"://exit program

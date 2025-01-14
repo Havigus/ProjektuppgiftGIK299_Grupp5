@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace ProjektuppgiftGIK299_Grupp5;
 
-public class ValidInput
+public abstract class ValidInput
 {
       public static Services SelectService()
     {
@@ -120,6 +120,7 @@ public class ValidInput
         }
         return comment;
     }
+    
     public static bool IsOverlapping(DateTime bookingDate)
     {
         DateTime previousSlot = bookingDate.AddMinutes(-30);

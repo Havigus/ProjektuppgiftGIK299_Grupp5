@@ -7,8 +7,9 @@ internal abstract class FileManager
 {
     
     // Writes a list of bookings to a CSV file in the program's base directory.
-    public static void WriteToFile(List<Booking> bookings)
+    public static void WriteToFile()
     {
+        
         //gets the base directory where the program is running
         string baseDirectory = AppContext.BaseDirectory;
         
@@ -22,7 +23,7 @@ internal abstract class FileManager
             sw.WriteLine("BokningsId;Kundens Namn;RegNr;Datum och tid;typ av Service;Kommentar");
             
             //loops through each booking
-            foreach (var booking in bookings)
+            foreach (var booking in AdminPanel.Bookings)
             {
                 //format and writes the booking to file using (;) as separator for use in excel
                 sw.WriteLine($"{booking.BookingId};" +

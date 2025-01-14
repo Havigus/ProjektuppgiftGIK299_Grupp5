@@ -23,77 +23,17 @@ public class AdminPanel
     //method to add booking to list
     public void AddBooking()
     {
-        Console.Write("KundNamn: ");
-        string name;
-        //prompts the user until a valid name is entered
-        while (!string.IsNullOrEmpty(name = Console.ReadLine()))
-        {
-            
-            //checks to se if it only contains letters
-            if (Regex.IsMatch(name, @"^[A-Za-zåäöÅÄÖéèÉÈçÇ' -]+$"))
-            {
-                //change the first leter to uppercase
-                name = char.ToUpper(name[0]) + name.Substring(1);
-                break;
-            }
-            Console.WriteLine("Ogiltigt inmatning");
-            Thread.Sleep(2000);
-            Console.Write("KundNamn: ");
-        }
-        
-        Console.Write("Bilregistreringsnummer: ");
-        string carRegNr;
-        //prompts the user for a regnr
-        while (!string.IsNullOrEmpty(carRegNr = Console.ReadLine().ToUpper()))
-        {
-            
-            //checks to se that a valid regnr was put in
-            if (Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$|^[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
-            {
-                break;
-            }
-            Console.WriteLine("Ogitigt inmatning. Exempel på giltig inmatning. ABC123 eller ABC12D");
-            Thread.Sleep(2000);
-            Console.Write("Bilregistreringsnummer: ");
-        }
-        
-        //prompts the user for a date
-        Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
-        DateTime dateTime;
-        while (true)
-        {
-            //checks to se if its a valid format
-            if (!DateTime.TryParse(Console.ReadLine(), out dateTime))
-            {
-                Console.WriteLine("\nOgiltigt datum och tid.");
-                Thread.Sleep(1000);
-                Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
-            }
-            //checks that its no dubble booking
-            else if (IsOverlapping(dateTime))
-            {
-                Console.WriteLine("Error: Double booking! Please choose a different time.");
-                Thread.Sleep(1000);
-                Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
-            }
-            else
-            {
-                // Valid date and no overlap
-                break;
-            }
-        }
+        string name = GetValidName();
+
+        string carRegNr = GetValidRegNr();
+
+        DateTime dateTime = GetValidDate();
         
         //prompts the user to select type of service
         var service = SelectService();
         
-        string comment = null;
-        Console.WriteLine("\nVill du lägga till en kommentar? Y/N");
-        if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
-        {
-            Console.Write("\nSkriv in din kommentar: ");
-            comment = Console.ReadLine();
-            Thread.Sleep(1000);
-        }
+        string comment = GetComment();
+        
         Console.Clear();
         Console.WriteLine();
         Console.WriteLine($"""
@@ -127,7 +67,7 @@ public class AdminPanel
             Console.Clear();
         }
 
-    }//TODO! KANSKE DELA UPP I MINDRE MODULER
+    }
     
     //metod to view bookings in bookinglist
     public void ViewBookings(DateTime date)
@@ -173,11 +113,7 @@ public class AdminPanel
                 case "1":
                     //changes the name
                     Console.WriteLine("Ange ett nytt namn.");
-                    string newCustomerName = Console.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(newCustomerName))
-                    {
-                        bookingToEdit.CustomerName = newCustomerName;
-                    }
+                    bookingToEdit.CustomerName = GetValidName();
 
                     break;
                 case "2":
@@ -185,12 +121,7 @@ public class AdminPanel
                     Console.WriteLine();
                     Console.WriteLine("Ange ett nytt regnummer.");
                     Console.WriteLine();
-                    string newCustomerRegNr = Console.ReadLine();
-                    Console.WriteLine();
-                    if (!string.IsNullOrWhiteSpace(newCustomerRegNr))
-                    {
-                        bookingToEdit.CustomerRegNr = newCustomerRegNr;
-                    }
+                    bookingToEdit.CustomerRegNr = GetValidRegNr();
 
                     break;
                 case "3":
@@ -198,20 +129,7 @@ public class AdminPanel
                     Console.WriteLine();
                     Console.WriteLine("Ange ett nytt datum och tid (YYYY, MM, DD, HH:MM,)");
                     Console.WriteLine();
-                    DateTime newBookingDate;
-                    Console.WriteLine();
-                    while (!DateTime.TryParse(Console.ReadLine(), out newBookingDate))
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Ogiltigt datum och tid.");
-                        Thread.Sleep(300);
-                    }
-
-                    if (!newBookingDate.Equals(bookingToEdit.BookingDate) && !IsOverlapping(newBookingDate))
-                    {
-                        Console.WriteLine();
-                        bookingToEdit.BookingDate = newBookingDate;
-                    }
+                    bookingToEdit.BookingDate = GetValidDate();
 
                     break;
                 case "4":
@@ -221,11 +139,7 @@ public class AdminPanel
                     break;
                 case "5":
                     Console.WriteLine("Ange en ny kommentar.");
-                    string newComment = Console.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(newComment))
-                    {
-                        bookingToEdit.Comment = newComment;
-                    }
+                    bookingToEdit.Comment = GetComment();
                     break;
             }
             
@@ -324,6 +238,93 @@ public class AdminPanel
             }
             Console.WriteLine("\nOgiltigt val.");
         }
+    }
+
+    private static string GetValidName()
+    {
+        Console.Write("KundNamn: ");
+        string name;
+        //prompts the user until a valid name is entered
+        while (!string.IsNullOrEmpty(name = Console.ReadLine()))
+        {
+            
+            //checks to se if it only contains letters
+            if (Regex.IsMatch(name, @"^[A-Za-zåäöÅÄÖéèÉÈçÇ' -]+$"))
+            {
+                //change the first leter to uppercase
+                name = char.ToUpper(name[0]) + name.Substring(1);
+                break;
+            }
+            Console.WriteLine("Ogiltigt inmatning");
+            Thread.Sleep(2000);
+            Console.Write("KundNamn: ");
+        }
+
+        return name;
+    }
+
+    private static string GetValidRegNr()
+    {
+        Console.Write("Bilregistreringsnummer: ");
+        string carRegNr;
+        //prompts the user for a regnr
+        while (!string.IsNullOrEmpty(carRegNr = Console.ReadLine().ToUpper()))
+        {
+            
+            //checks to se that a valid regnr was put in
+            if (Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$|^[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
+            {
+                break;
+            }
+            Console.WriteLine("Ogitigt inmatning. Exempel på giltig inmatning. ABC123 eller ABC12D");
+            Thread.Sleep(2000);
+            Console.Write("Bilregistreringsnummer: ");
+        }
+        return carRegNr;
+    }
+
+    private  DateTime GetValidDate()
+    {
+        //prompts the user for a date
+        Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
+        DateTime dateTime;
+        while (true)
+        {
+            //checks to se if its a valid format
+            if (!DateTime.TryParse(Console.ReadLine(), out dateTime))
+            {
+                Console.WriteLine("\nOgiltigt datum och tid.");
+                Thread.Sleep(1000);
+                Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
+            }
+            //checks that its no dubble booking
+            else if (IsOverlapping(dateTime))
+            {
+                Console.WriteLine("Error: Double booking! Please choose a different time.");
+                Thread.Sleep(1000);
+                Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
+            }
+            else
+            {
+                // Valid date and no overlap
+                break;
+            }
+        }
+
+        return dateTime;
+    }
+
+    private static string GetComment()
+    {
+        string comment = null;
+        Console.WriteLine("\nVill du lägga till en kommentar? Y/N");
+        if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
+        {
+            Console.Write("\nSkriv in din kommentar: ");
+            comment = Console.ReadLine();
+            Thread.Sleep(1000);
+        }
+        return comment;
     }
 
 }

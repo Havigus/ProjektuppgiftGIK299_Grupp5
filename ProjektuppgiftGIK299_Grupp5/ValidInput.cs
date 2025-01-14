@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace ProjektuppgiftGIK299_Grupp5;
 
-public class ValidInput
+public abstract class ValidInput
 {
       public static Services SelectService()
     {
@@ -34,7 +34,7 @@ public class ValidInput
         }
     }
 
-    public static string GetValidName()
+    public static string GetValidName() //method to get and validate customer name
     {
         Console.Write("KundNamn: ");
         string name;
@@ -57,7 +57,7 @@ public class ValidInput
         return name;
     }
 
-    public static string GetValidRegNr()
+    public static string GetValidRegNr() //method to get and validate customer vehicle regnr
     {
         Console.Write("Bilregistreringsnummer: ");
         string carRegNr;
@@ -77,7 +77,7 @@ public class ValidInput
         return carRegNr;
     }
 
-    public static DateTime GetValidDate()
+    public static DateTime GetValidDate() //method to get a valid date and checks for double booking
     {
         //prompts the user for a date
         Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
@@ -91,7 +91,7 @@ public class ValidInput
                 Thread.Sleep(1000);
                 Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
             }
-            //checks that its no dubble booking
+            //checks that its no double booking
             else if (IsOverlapping(dateTime))
             {
                 Console.WriteLine("Error: Double booking! Please choose a different time.");
@@ -106,12 +106,13 @@ public class ValidInput
         }
 
         return dateTime;
-    }
+    } 
 
-    public static string GetComment()
+    public static string GetComment() //metrhod to add a comment to the booking
     {
         string comment = null;
         Console.WriteLine("\nVill du lägga till en kommentar? Y/N");
+        //prompts the user and checks if they want to add a comment
         if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
         {
             Console.Write("\nSkriv in din kommentar: ");
@@ -120,12 +121,15 @@ public class ValidInput
         }
         return comment;
     }
-    public static bool IsOverlapping(DateTime bookingDate)
+    
+    public static bool IsOverlapping(DateTime bookingDate) //method to check for double bookings
     {
-        DateTime previousSlot = bookingDate.AddMinutes(-30);
-        DateTime endTime = bookingDate.AddMinutes(30);
+        //defines a 30min range before and after the booking date 
+        DateTime startRange = bookingDate.AddMinutes(-30);
+        DateTime endRange = bookingDate.AddMinutes(30);
 
-        return AdminPanel.Bookings.Any(booking => (booking.BookingDate >= previousSlot && booking.BookingDate <= endTime) ||
-                                       (booking.BookingDate.AddMinutes(-30) <= endTime && booking.BookingDate.AddMinutes(30) >= previousSlot));
+        //checks if any existing booking overlaps with the range
+        return AdminPanel.Bookings.Any(booking => booking.BookingDate >= startRange && booking.BookingDate <= endRange);
     }
+    
 }

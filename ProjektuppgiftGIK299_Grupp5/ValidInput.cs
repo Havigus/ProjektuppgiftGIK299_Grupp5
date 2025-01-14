@@ -4,7 +4,7 @@ namespace ProjektuppgiftGIK299_Grupp5;
 
 public abstract class ValidInput
 {
-      public static Services SelectService()
+    public static Services SelectService()
     {
         Console.WriteLine();
         Console.WriteLine("""
@@ -32,6 +32,21 @@ public abstract class ValidInput
             }
             Console.WriteLine("\nOgiltigt val.");
         }
+    }
+
+    public static int GetValidId()//method to get and validate booking id
+    {
+        Console.Write("Boknings Id: ");
+        int id = 0;
+        //checks to se if input is an int
+        while (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("\nOgiltigt inmatning.");
+            Thread.Sleep(2000);
+            Console.Write("Boknings Id: ");
+        }
+
+        return id;
     }
 
     public static string GetValidName() //method to get and validate customer name

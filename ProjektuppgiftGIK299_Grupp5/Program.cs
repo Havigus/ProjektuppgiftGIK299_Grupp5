@@ -71,47 +71,57 @@ class Program
                     Thread.Sleep(1000);
                     break;
 
-                case "5"://search booking by regnr, customername, bookingID or date
-                    Console.WriteLine();
+                case "5"://search booking by regnr, customername or bookingID
+                    Console.Clear();
+                    
+                    //displays a menu for the user
                     Console.WriteLine("Hur vill du söka? Välj med en siffra: ");
                     Console.WriteLine();
                     Console.WriteLine("1. Registreringsnummer" +
                         "\n2. Kundens namn" +
                         "\n3. BokningsID" +
                         "\n4. Sök med datum");
-                    string searchBooking = Console.ReadKey(intercept: true).KeyChar.ToString();
-                    if (searchBooking == "1")
+                    
+                    //get the user choice 
+                    string searchChoice = Console.ReadKey(intercept: true).KeyChar.ToString();
+                    
+                    if (searchChoice == "1")
                     {
-                        Console.WriteLine("\nSkriv in kundens registreringsnummer: ");
-                        string regNr = string.Format(Console.ReadLine().ToUpper());
+                        Console.WriteLine();
+                        string regNr = ValidInput.GetValidRegNr();
                         Console.WriteLine();
                         adminPanel.SearchBookingRegNr(regNr);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchBooking == "2")
+                    else if (searchChoice == "2")
                     {
-                        Console.WriteLine("\nSkriv in kundens namn: ");
-                        string customerName = string.Format(Console.ReadLine());
+                        Console.WriteLine();
+                        string customerName = ValidInput.GetValidName();
                         Console.WriteLine();
                         adminPanel.SearchBookingCustName(customerName);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchBooking == "3")
+                    else if (searchChoice == "3")
                     {
-                        Console.WriteLine("\nSkriv in kundens bokningsID: ");
-                        int bookingID = Int32.Parse(Console.ReadLine());
                         Console.WriteLine();
-                        adminPanel.SearchBookingBookingID(bookingID);
+                        int bookingId = ValidInput.GetValidId();
+                        Console.WriteLine();
+                        adminPanel.SearchBookingBookingID(bookingId);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchBooking == "4")
+                    else if (searchChoice == "4")
                     {
-                        Console.WriteLine("\nSkriv in ett giltigt datum (yyyy mm dd): ");
-                        DateTime searchDate = DateTime.Parse(Console.ReadLine());
-                        Console.WriteLine();
+                        Console.Write("\nSkriv in ett datum (yyyy mm dd): ");
+                        DateTime searchDate;
+                        while (!DateTime.TryParse(Console.ReadLine(), out searchDate))
+                        {
+                            Console.WriteLine("\nOgiltigt datum och tid.");
+                            Thread.Sleep(1000);
+                            Console.Write("Datum (Skriv som yyyy,mm,dd): ");
+                        }
                         adminPanel.ViewBookingsByDate(searchDate);
                         Thread.Sleep(1000);
 

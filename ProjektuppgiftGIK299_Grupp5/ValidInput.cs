@@ -6,6 +6,7 @@ public abstract class ValidInput
 {
     public static Services SelectService()
     {
+        //displats a menu of available services to the user
         Console.WriteLine();
         Console.WriteLine("""
                           Vilken tjänst vill du boka in?
@@ -17,15 +18,18 @@ public abstract class ValidInput
                             5. EfterdragningDäck
                             6. BeställaDäck
                           """);
-
+            
         while (true)
-        {
+        {   
+            //prompts the user for a choice 
             Console.Write("\nAnge en siffra: ");
             var key = Console.ReadKey(intercept: true).KeyChar;
-
+            
+            //try to pars the input to an int and check if its a valid enum value
             if (int.TryParse(key.ToString(), out int num) && Enum.IsDefined(typeof(Services), num))
             {
                 Console.WriteLine();
+                //converts the numeric input to the enum value
                 var service = (Services)num;
                 return service;
 
@@ -41,7 +45,7 @@ public abstract class ValidInput
         //checks to se if input is an int
         while (!int.TryParse(Console.ReadLine(), out id))
         {
-            Console.WriteLine("\nOgiltigt inmatning.");
+            Console.WriteLine("\nOgiltigt inmatning. Ange en siffra.");
             Thread.Sleep(2000);
             Console.Write("Boknings Id: ");
         }
@@ -73,7 +77,7 @@ public abstract class ValidInput
         
         //prompts the user for a regnr and checks that its not empty or not valid
         while (string.IsNullOrWhiteSpace(carRegNr = Console.ReadLine().ToUpper()) ||
-               !Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$|^[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
+               !Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$^|[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
         {
             Console.WriteLine("Ogitigt inmatning. Exempel på giltig inmatning. ABC123 eller ABC12W");
             Thread.Sleep(2000);
@@ -115,7 +119,7 @@ public abstract class ValidInput
 
     public static string GetComment() //metrhod to add a comment to the booking
     {
-        string comment = null;
+        string? comment = null;
         Console.WriteLine("\nVill du lägga till en kommentar? Y/N");
         //prompts the user and checks if they want to add a comment
         if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")

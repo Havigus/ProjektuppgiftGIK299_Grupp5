@@ -25,7 +25,7 @@ internal abstract class FileManager
             //loops through each booking
             foreach (var booking in AdminPanel.Bookings)
             {
-                //format and writes the booking to file using (;) as separator for use in excel
+                //format and writes the booking to file using (;) as separator for use in Excel
                 sw.WriteLine($"{booking.BookingId};" +
                 $"\"{booking.CustomerName}\";" +
                 $"\"{booking.CustomerRegNr}\";" +

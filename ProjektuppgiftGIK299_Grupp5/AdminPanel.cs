@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace ProjektuppgiftGIK299_Grupp5;
 
 public class AdminPanel
@@ -169,12 +167,12 @@ public class AdminPanel
         if (bookingToCancel != null)
         {
             Bookings.Remove(bookingToCancel);
-            Console.WriteLine("Bokningen har blivit borttagen.");
+            Console.WriteLine("\nBokningen har blivit borttagen.");
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
         }
 
-        Console.WriteLine("Det finns ingen bokning med det bokningsid.");
+        Console.WriteLine("Det finns ingen bokning med det bokningsId.");
     }
 
     
@@ -228,19 +226,19 @@ public class AdminPanel
         Console.Clear();
     }
     
-    public void SearchBookingBookingID(int custID) //method to search bookings by booking id
+    public void SearchBookingBookingId(int custId) //method to search bookings by booking id
     {
         //finds the bookings that matches the specified bookingId
-        var customerBookingID = Bookings.Where(b => b.BookingId == custID).ToList();
+        var customerBookingId = Bookings.Where(b => b.BookingId == custId).ToList();
         
         //if no match was found
-        if (customerBookingID.Count == 0)
+        if (customerBookingId.Count == 0)
         {
-            Console.WriteLine($"Det finns inga bokningar för Id: {custID} ");
+            Console.WriteLine($"Det finns inga bokningar för Id: {custId} ");
         }
         
         //loops through and displays the matching bookings for the user
-        foreach (var booking in customerBookingID)
+        foreach (var booking in customerBookingId)
         {
             Console.WriteLine();
             Console.WriteLine(booking);

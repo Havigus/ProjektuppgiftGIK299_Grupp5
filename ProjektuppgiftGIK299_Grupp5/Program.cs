@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-
-namespace ProjektuppgiftGIK299_Grupp5;
+﻿namespace ProjektuppgiftGIK299_Grupp5;
 
 class Program
 {
     static void Main()
     {
         
+        //instantiating new adminpanel object
        AdminPanel adminPanel = new();
        
        //adds dummy bookings to populate the list 
@@ -49,17 +48,44 @@ class Program
                 case "2"://change a booking
                     Console.WriteLine();
                     Console.WriteLine("Vilken bokning vill du ändra på?");
-                    Console.Write("Ange BokningsId: ");
-                    int bookingIdToChange = int.Parse(Console.ReadLine());
-                    Console.WriteLine();
+                    
+                    int bookingIdToChange;
+                    while (true)
+                    {
+                        //prompts the user for an input
+                        Console.Write("Ange BokningsId: ");
+                        string? userInput = Console.ReadLine();
+                        
+                        //checks to se if its a numerical value
+                        if (int.TryParse(userInput, out bookingIdToChange))
+                        {
+                            break;
+                        }
+                        
+                        Console.WriteLine("Ogiltigt bokningsId. Ange ett numeriskt värde.");
+                    }
                     adminPanel.ChangeBooking(bookingIdToChange);
                 break;
                 
                 case "3"://remove a booking
-                    Console.WriteLine("Vilken bokning vill du ta bort?");
-                    Console.Write("Ange BokningsId: ");
-                    int bookingIdToCancel = int.Parse(Console.ReadLine());
                     Console.WriteLine();
+                    Console.WriteLine("Vilken bokning vill du ta bort?");
+
+                    int bookingIdToCancel;
+                    while (true)
+                    {
+                        //prompts the user for an input
+                        Console.Write("Ange BokningsId: ");
+                        string? userInput = Console.ReadLine();
+                        
+                        //checks to se if its a numerical value
+                        if (int.TryParse(userInput, out bookingIdToCancel))
+                        {
+                            break;
+                        }
+                        
+                        Console.WriteLine("Ogiltigt bokningsId. Ange ett numeriskt värde.");
+                    }
                     adminPanel.CancelBooking(bookingIdToCancel); 
                 break;
                 
@@ -85,7 +111,7 @@ class Program
                     //get the user choice 
                     string searchChoice = Console.ReadKey(intercept: true).KeyChar.ToString();
                     
-                    if (searchChoice == "1")
+                    if (searchChoice == "1") //searches for booking by regnr
                     {
                         Console.WriteLine();
                         string regNr = ValidInput.GetValidRegNr();
@@ -94,7 +120,7 @@ class Program
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchChoice == "2")
+                    else if (searchChoice == "2") //searches for booking by customer name
                     {
                         Console.WriteLine();
                         string customerName = ValidInput.GetValidName();
@@ -103,16 +129,16 @@ class Program
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchChoice == "3")
+                    else if (searchChoice == "3") //searches for bookings by bookingId
                     {
                         Console.WriteLine();
                         int bookingId = ValidInput.GetValidId();
                         Console.WriteLine();
-                        adminPanel.SearchBookingBookingID(bookingId);
+                        adminPanel.SearchBookingBookingId(bookingId);
                         Console.WriteLine();
                         Thread.Sleep(1000);
                     }
-                    else if (searchChoice == "4")
+                    else if (searchChoice == "4") //searches for bookings by date
                     {
                         Console.Write("\nSkriv in ett datum (yyyy mm dd): ");
                         DateTime searchDate;

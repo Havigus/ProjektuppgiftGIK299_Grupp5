@@ -87,7 +87,7 @@ public class AdminPanel
             Thread.Sleep(1000);
             
         }
-        Console.WriteLine("Press any key to continue...");
+        Console.WriteLine("Press enter to continue...");
         Console.ReadLine();
         Console.Clear();
         

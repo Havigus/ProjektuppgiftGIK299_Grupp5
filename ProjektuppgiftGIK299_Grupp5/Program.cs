@@ -30,7 +30,7 @@ class Program
                  2. Ändra en bokning
                  3. Ta bort en bokning
                  4. Se dagens bokningar
-                 5. Sök efter bokning med registreringsnummer
+                 5. Sök efter bokningar
                  6. Spara dagens bokningar till fil
                  7. Avsluta programmet
                 """);
@@ -68,17 +68,40 @@ class Program
                     Thread.Sleep(1000);
                     break;
 
-                case "5"://search booking by regnr
+                case "5"://search booking by regnr, customername or bookingID
                     Console.WriteLine();
-                    Console.WriteLine("Vilken bokning vill du se? Skriv kundens registreringsnummer: ");
+                    Console.WriteLine("Hur vill du söka? Välj med en siffra: ");
                     Console.WriteLine();
-                    string regNr = string.Format(Console.ReadLine().ToUpper());
-                    Console.WriteLine();
-                    adminPanel.SearchBookings(regNr);
-                    Console.WriteLine();
-                    Thread.Sleep(1000);
-
+                    Console.WriteLine("1. Registreringsnummer" +
+                        "\n2. Kundens namn" +
+                        "\n3. BokningsID");
+                    string searchBooking = Console.ReadKey(intercept: true).KeyChar.ToString()
+                    if (searchBooking == "1")
+                    {
+                        string regNr = string.Format(Console.ReadLine().ToUpper());
+                        Console.WriteLine();
+                        adminPanel.SearchBookings(regNr);
+                        Console.WriteLine();
+                        Thread.Sleep(1000);
+                    }
+                    else if (searchBooking == "2")
+                    {
+                        string customerName = string.Format(Console.ReadLine().ToUpper());
+                        Console.WriteLine();
+                        adminPanel.SearchBookings(customerName);
+                        Console.WriteLine();
+                        Thread.Sleep(1000);
+                    }
+                    else if (searchBooking == "3")
+                    {
+                        string bookingID = string.Format(Console.ReadLine().ToUpper());
+                        Console.WriteLine();
+                        adminPanel.SearchBookings(bookingID);
+                        Console.WriteLine();
+                        Thread.Sleep(1000);
+                    }
                     break;
+
                 
                 case "6"://writes todaysbookings to a csv file
                     FileManager.WriteToFile(adminPanel.Bookings);

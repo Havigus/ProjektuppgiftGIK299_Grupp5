@@ -34,8 +34,10 @@ internal abstract class FileManager
                 $"\"{booking.Comment}\"");
             }
         }
-
+        //show the user where the file is saved
         Console.WriteLine($"Bokningarna har sparats till fil vid {filePath}");
-        Thread.Sleep(3000);
+        Console.WriteLine("Press enter key to continue...");
+        Console.ReadKey();
+        Console.Clear();
     }
 }

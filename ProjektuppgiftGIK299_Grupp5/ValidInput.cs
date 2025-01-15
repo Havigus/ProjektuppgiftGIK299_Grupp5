@@ -77,7 +77,7 @@ public abstract class ValidInput
         
         //prompts the user for a regnr and checks that its not empty or not valid
         while (string.IsNullOrWhiteSpace(carRegNr = Console.ReadLine().ToUpper()) ||
-               !Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$^|[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
+               !Regex.IsMatch(carRegNr, @"^[A-ZÅÄÖ]{3}\d{3}$|^[A-ZÅÄÖ]{3}\d{2}[A-ZÅÄÖ]{1}$"))
         {
             Console.WriteLine("Ogitigt inmatning. Exempel på giltig inmatning. ABC123 eller ABC12W");
             Thread.Sleep(2000);
@@ -89,7 +89,7 @@ public abstract class ValidInput
     public static DateTime GetValidDate() //method to get a valid date and checks for double booking
     {
         //prompts the user for a date
-        Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
+        Console.Write("Datum och tid (Skriv som yyyy,mm,dd hh:mm): ");
         DateTime dateTime;
         while (true)
         {
@@ -98,14 +98,14 @@ public abstract class ValidInput
             {
                 Console.WriteLine("\nOgiltigt datum och tid.");
                 Thread.Sleep(1000);
-                Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
+                Console.Write("Datum och tid (Skriv som yyyy,mm,dd hh:mm): ");
             }
             //checks that its no double booking
             else if (IsOverlapping(dateTime))
             {
                 Console.WriteLine("Error: Double booking! Please choose a different time.");
                 Thread.Sleep(1000);
-                Console.Write("Datum och tid (Skriv som yyyy,mm,dd och hh:mm): ");
+                Console.Write("Datum och tid (Skriv som yyyy,mm,dd hh:mm): ");
             }
             else
             {

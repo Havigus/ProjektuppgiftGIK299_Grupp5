@@ -106,7 +106,8 @@ class Program
                     Console.WriteLine("1. Registreringsnummer" +
                         "\n2. Kundens namn" +
                         "\n3. BokningsID" +
-                        "\n4. Sök med datum");
+                        "\n4. Sök med datum" +
+                        "\n5. Tillbaka till Huvudmeny");
                     
                     //get the user choice 
                     string searchChoice = Console.ReadKey(intercept: true).KeyChar.ToString();
@@ -140,7 +141,7 @@ class Program
                     }
                     else if (searchChoice == "4") //searches for bookings by date
                     {
-                        Console.Write("\nSkriv in ett datum (yyyy mm dd): ");
+                        Console.Write("\nSkriv in ett datum (yyyy,mm,dd): ");
                         DateTime searchDate;
                         while (!DateTime.TryParse(Console.ReadLine(), out searchDate))
                         {
@@ -151,6 +152,10 @@ class Program
                         adminPanel.ViewBookingsByDate(searchDate);
                         Thread.Sleep(1000);
 
+                    }
+                    else if (searchChoice == "5") //option to get back to main menu
+                    {
+                        Console.Clear();
                     }
                     break;
 

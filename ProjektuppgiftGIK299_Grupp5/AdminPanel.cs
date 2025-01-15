@@ -22,11 +22,15 @@ public class AdminPanel
         
         string comment = ValidInput.GetComment();
         
+        int bookingId = ++_bookingCounter;
+        
         Console.Clear();
         Console.WriteLine();
         Console.WriteLine($"""
                            Bekräfta uppgifterna.
-
+                           
+                           BokningsId: {bookingId}
+                           
                            Kundnamn: {name}
 
                            Bilregistreringsnummer: {carRegNr}
@@ -43,14 +47,13 @@ public class AdminPanel
         Console.WriteLine();
         if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
         {
-            int bookingId = ++_bookingCounter;
             Console.WriteLine();
             var booking = new Booking(bookingId,name, carRegNr, dateTime, service, comment);
             Bookings.Add(booking);
             Console.WriteLine();
             Console.WriteLine("Bokningen lades till.");
             _bookingCounter++;
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press enter key to continue...");
             Console.ReadKey();
             Console.Clear();
         }
@@ -166,10 +169,21 @@ public class AdminPanel
         //if a match is found, remove it from the Bookings list
         if (bookingToCancel != null)
         {
-            Bookings.Remove(bookingToCancel);
-            Console.WriteLine("\nBokningen har blivit borttagen.");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadLine();
+            //show the booking that about to be cancled
+            Console.Clear();
+            Console.WriteLine(bookingToCancel);
+            
+            //prompts the user if they are sure about removing
+            Console.WriteLine("\nVill du verkligen ta bort denna bokning? Y/N");
+            if (Console.ReadKey(intercept: true).KeyChar.ToString().ToUpper() == "Y")
+            {
+                //removes the booking
+                Bookings.Remove(bookingToCancel);
+                Console.WriteLine("\nBokningen har blivit borttagen.");
+                Console.WriteLine("Press enter key to continue...");
+                Console.ReadLine();
+            }
+            
         }
 
         Console.WriteLine("Det finns ingen bokning med det bokningsId.");
@@ -221,7 +235,7 @@ public class AdminPanel
         }
         
         //gives the user time to read the output
-        Console.WriteLine("Press any key to continue...");
+        Console.WriteLine("Press enter key to continue...");
         Console.ReadKey();
         Console.Clear();
     }
@@ -246,7 +260,7 @@ public class AdminPanel
         }
         
         //gives the user time to read the output
-        Console.WriteLine("Press any key to continue...");
+        Console.WriteLine("Press enter key to continue...");
         Console.ReadKey();
         Console.Clear();
     }

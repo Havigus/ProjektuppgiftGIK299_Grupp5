@@ -22,7 +22,7 @@ public class AdminPanel
         
         string comment = ValidInput.GetComment();
         
-        int bookingId = ++_bookingCounter;
+        int bookingId = _bookingCounter++;
         
         Console.Clear();
         Console.WriteLine();
@@ -268,6 +268,7 @@ public class AdminPanel
     
     public void AddDummyBooking() //adds 3 dummy bookings to the list 
     {
+        _bookingCounter++;
         Bookings.Add(new Booking(
             bookingId: _bookingCounter,
             customerName: "Bob",
